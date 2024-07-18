@@ -10,5 +10,5 @@ Hier find ie en korpus af text schriven in dat planspraak Germanisch.
 ### Sie oh:
 
 - [Kurs](https://germanisch-lang.github.io/learn-english) tu lere Germanisch
-- [Wördbuk](https://germanisch-lang.github.io/dictionary) met mer als 1.000 wörd
+- [Wördbuk](https://germanisch-lang.github.io/dictionary) met mer dan 1.000 wörd
 - [Officjalen hemsyde](http://sambahsa.pbworks.com/w/page/153333312/Germanisch) af Germanisch
