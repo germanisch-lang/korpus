@@ -3,7 +3,7 @@
 - Forfatter: *Johan Ludvig Runeberg*
 - Oversetter: *Olivier Simon*
 - Textart: *gediht, oversetting*
-- [Original in schwedisch](https://runeberg.org/runeberg/0_15_06.html)
+- [Original in svedisch](https://runeberg.org/runeberg/0_15_06.html)
 
 ---
 
