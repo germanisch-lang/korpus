@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Germanischt korpus</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="En korpus af text schriven in Germanisch.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "rust" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">Hovdsyde</a></li><li class="chapter-item expanded affix "><li class="part-title">Dihting</li><li class="chapter-item expanded "><a href="runeberg.html">Gediht af J. Runeberg</a></li><li class="chapter-item expanded "><a href="moerk-et-was-den-mon-schin-liht.html">Mörk et was, den mon schin liht</a></li><li class="chapter-item expanded "><a href="ringgediht.html">Ringgediht</a></li><li class="chapter-item expanded affix "><li class="part-title">Prosa</li><li class="chapter-item expanded "><a href="dat-daeuche-spraak.html">Dat däuche spraak</a></li><li class="chapter-item expanded "><a href="de-grote-infaell.html">De grote infäll</a></li><li class="chapter-item expanded "><a href="den-germanische-west.html">Den germanische West</a></li><li class="chapter-item expanded "><a href="fortelling-fram-en-dägbuk.html">Fortelling fram en dägbuk</a></li><li class="chapter-item expanded "><a href="frodo-den-hobbit.html">Frodo den Hobbit</a></li><li class="chapter-item expanded "><a href="gollums-schat.html">Gollums schat</a></li><li class="chapter-item expanded "><a href="halifirien.html">Halifirien</a></li><li class="chapter-item expanded "><a href="lowfragment.html">Lowfragment</a></li><li class="chapter-item expanded "><a href="romaene-eroebring.html">Romäne eröbring</a></li><li class="chapter-item expanded "><a href="woden-oh-tiewe.html">Woden oh Tiewe</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Germanischt korpus</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="welkomm"><a class="header" href="#welkomm">Welkomm!</a></h2>
+<p>Hier find ie en korpus af text schriven in dat planspraak Germanisch.</p>
+<h3 id="henwysing-for-brüker"><a class="header" href="#henwysing-for-brüker">Henwysing for brüker:</a></h3>
+<ul>
+<li>Klick up den lup oven venster tu doruhsoke alle text.</li>
+<li>Tu lese oh forsto de text in Germanisch, kann ie bruke ort <a href="/dictionary">wördbuk</a>.</li>
+</ul>
+<h3 id="sie-oh"><a class="header" href="#sie-oh">Sie oh:</a></h3>
+<ul>
+<li><a href="https://germanisch-lang.github.io/learn-english">Kurs</a> tu lere Germanisch</li>
+<li><a href="https://germanisch-lang.github.io/dictionary">Wördbuk</a> met mer als 1.000 wörd</li>
+<li><a href="http://sambahsa.pbworks.com/w/page/153333312/Germanisch">Officjalen hemsyde</a> af Germanisch</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><p><strong>Informasjonen:</strong></p>
+<ul>
+<li>Forfatter: <em>Johan Ludvig Runeberg</em></li>
+<li>Oversetter: <em>Olivier Simon</em></li>
+<li>Textart: <em>gediht, oversetting</em></li>
+<li><a href="https://runeberg.org/runeberg/0_15_06.html">Original in schwedisch</a></li>
+</ul>
+<hr />
+<h2 id="gediht-af-j-runeberg"><a class="header" href="#gediht-af-j-runeberg">Gediht af J. Runeberg</a></h2>
+<p>Kommen met anemone den schöne Mai<br />
+Mäid dere braune löck krans<br />
+Hastend tu den ringdans um den maimast<br />
+Alle ären glad in den dans<br />
+Glad is wo ber en smucken juvelen<br />
+Disen, wem hav lückt hern blümkrans is glad<br />
+Disen, wo fiel rodne wang heren<br />
+Wo is den glädst af alle, du frag ?<br />
+Disen, wo sie in den ring forlovd heren.</p>
+<div style="break-before: page; page-break-before: always;"></div><p><strong>Informasjonen:</strong></p>
+<ul>
+<li>Forfatter: <em>unkennd</em></li>
+<li>Oversetter: <em>Leo Stief</em></li>
+<li>Textart: <em>gediht, oversetting</em></li>
+<li>Original: <a href="https://de.wikipedia.org/wiki/Dunkel_war%E2%80%99s,_der_Mond_schien_helle"><em>Dunkel war’s, der Mond schien helle</em></a></li>
+</ul>
+<hr />
+<h2 id="mörk-et-was-den-mon-schin-liht"><a class="header" href="#mörk-et-was-den-mon-schin-liht">Mörk et was, den mon schin liht</a></h2>
+<p>Mörk et was, den mon schin liht,<br />
+snebedeckt dat grine land,<br />
+als en wagen blixekwick<br />
+langsam um den winkel kam.</p>
+<p>Daarin saten stonde mensch,<br />
+swygend sprekend met elchand’,<br />
+als en hare, schoten daud,<br />
+up den sandbank skaate gik.</p>
+<p>Oh en jungling, blond sy löck,<br />
+haar pikswart so als den naht,<br />
+sat daar up en grinen kist<br />
+der af roden farve was.</p>
+<p>An syn syd’ en oraldt wyv,<br />
+talde just so sextien jaar,<br />
+in den hand en butterbrod<br />
+dat met swynfett smered was.</p>
+<div style="break-before: page; page-break-before: always;"></div><p><strong>Informasjonen:</strong></p>
+<ul>
+<li>Oversetter: <em>Olivier Simon</em></li>
+<li>Textart: <em>gediht, oversetting</em></li>
+</ul>
+<hr />
+<h2 id="ringgediht"><a class="header" href="#ringgediht">Ringgediht</a></h2>
+<p>Drie ring for de elfköning under den himmel<br />
+Seven for de Dwergherrens in dere steinsäl<br />
+Nyn for de däudlige mensch<br />
+Ein for den Mörke Herren up syn mörke tron<br />
+in Mordorland waar de Schadus liggen<br />
+Ein Ring tu herrsche dem äll, Ein Ring tu finde dem<br />
+Ein Ring tu bringe dem äll, oh in Mörkhed tu binde dem<br />
+in Mordorland waar de Schadus liggen.</p>
+<div style="break-before: page; page-break-before: always;"></div><p><strong>Informasjonen:</strong></p>
+<ul>
+<li>Forfatter: <em>Leo Stief</em></li>
+<li>Textart: <em>prosa, originaltext</em></li>
+</ul>
+<hr />
+<h2 id="dat-däuche-spraak"><a class="header" href="#dat-däuche-spraak">Dat däuche spraak</a></h2>
+<p>Disdag hav ik merkt egen hu full dat däuche spraak is met wörd oh autdrück fram militär oh teknik. For exempel: Ik was just nu aut tu hale en paket fram den post oh dat weder is disdag serlig warm oh sunnig hier. Oh wen dat is so schön oh den himmel is klar, sej man oft „Bombenwetter“, dat is bombeweder, for in sulcht weder is et – ofder was et – lyt tu rihte artilleriefyer ofder afkaste bombe fram flytäu. Oh en andert exempel: Up myn bakweg kam ik forby an en wyv wo rook sterk af parfüm. In däuch sej man dat sulch en person is „eingedieselt“, dat is indieseld, drenkt in diesel.</p>
+<div style="break-before: page; page-break-before: always;"></div><p><strong>Informasjonen:</strong></p>
+<ul>
+<li>Oversetter: <em>Olivier Simon</em></li>
+<li>Textart: <em>prosa, oversetting</em></li>
+</ul>
+<hr />
+<h2 id="de-grote-infäll-5tet-jaarhundred"><a class="header" href="#de-grote-infäll-5tet-jaarhundred">De grote infäll (5tet jaarhundred)</a></h2>
+<p>Den lag änder sy an den beginn af dat 5te jaarhundred. Up den eine syde is dat Romäne Rik swakend, oh syn deling in two, in 395, hav for allt leded tu stacke in den Öst de wermiddels, latend den West tu unbeschütted. Op den andre syde, serjöse evenemente sche in de unkennde länd (disdäg Polen, Ukraine, Russland) : kommen fram Middelazjen, türkisch-mongolische nomaden, de Hün, ryd westwards, dryvend met sy overwonnene fölk. Af selsamt aspekte, sejd tu wese wild, die fororsak en ekten paniken under de germanische fölk welche flie for dem. En enormt kaos schak den germanische werld och kast tu den romäne grens somme schreckte fölk welche sok tuflukt in dat Rik.</p>
+<p>In winter 406-407, den Rhyngrens is dwungen af de Vandalen när Köln. Göten, Fränken, Sweeb, Allamannen, Burgunder laup tu Galljen in hele stäm, met wyv oh bärn. Rydend südwarts tu Italjen, den Westgoten Alarik infall oh plunder Rom in 410. In 429, den Vandalen Geiserik reich Nordafrika oh erober dat aktuelle Algerjen. In 441, de Änglen oh de Säxen beset Britannjen (dat aktuelle England) oh dryv bak de keltische inheimisch ; in dat 6te jaarhundred, mäng flie tu Aremorika, waaraut die mak en litelt Britannjen.</p>
+<div style="break-before: page; page-break-before: always;"></div><p><strong>Informasjonen:</strong></p>
+<ul>
+<li>Oversetter: <em>Olivier Simon</em></li>
+<li>Textart: <em>prosa, oversetting</em></li>
+</ul>
+<hr />
+<h2 id="den-germanische-west"><a class="header" href="#den-germanische-west">Den germanische West</a></h2>
+<p>After den fall af dat Westrik (476), den alderdomlige civilisasjonen fortset syn evolusjonen in dat Östrik, bliven intakt. In den West, daargen, den deling af dat territorjum twen de germanische infäller led kwick tu en almen bakgang : de Grote Infäll af dat Vte jaarhundred hav ruineerd den ökonomische aktiviteit ; städ är praktisch forsakt oh den bruk af mönt hav urden exepsjionell.</p>
+<div style="break-before: page; page-break-before: always;"></div><p><strong>Informasjonen:</strong></p>
+<ul>
+<li>Oversetter: <em>Leo Stief</em></li>
+<li>Textart: <em>prosa, oversetting</em></li>
+</ul>
+<hr />
+<h2 id="fortelling-fram-en-dägbuk"><a class="header" href="#fortelling-fram-en-dägbuk">Fortelling fram en dägbuk</a></h2>
+<p>Two junge männ wo had flied fram den sovjetische besetingzone ward tuwisen os, dat wi inkwarteer dem. Die fand arbeid in Osnabrück. After cirka ein monad gik einen af dem tu dat Ruhrgebiet. Daarafter merkte wi, dat einen af ore kü gav minder melk dan ärliger. Wi forsohte tu forklare dis oh had den misdenking, dat den junge mann wo had bliven her melkte heimlig in den naht. Fader lurde up him, ertapte oh konfronteerde him. Daarafter was dat stele over. Schorten tyd läter had hi dryd en glolampe aut en fating. Fader had nug oh melded him tu den polis. Hi had siker formoded dat oh gik weg den 10. december. Nit till läter merkte wi, dat hi had forsorgd sy met en par af ore kled upbeward in dat grote eikne kledskap dat stod oven in den hall.</p>
+<div style="break-before: page; page-break-before: always;"></div><p><strong>Informasjonen:</strong></p>
+<ul>
+<li>Oversetter: <em>Olivier Simon</em></li>
+<li>Textart: <em>prosafragment, oversetting</em></li>
+</ul>
+<hr />
+<h2 id="frodo-den-hobbit"><a class="header" href="#frodo-den-hobbit">Frodo den Hobbit</a></h2>
+<p>Et is fortalt dat Frodo den Hobbit akcepteerde Mithrandirs updrag, dat hi kräutsed naht oh fären met en djener, dat hi reiched Wurdsberg trots Saurons vräde oh dat hi kasted in de flamme waar den had wesen smeded den Grote Mahtring der was endelig stört oh syn ivle kraft forbrukt.</p>
+<div style="break-before: page; page-break-before: always;"></div><p><strong>Informasjonen:</strong></p>
+<ul>
+<li>Oversetter: <em>Olivier Simon</em></li>
+<li>Textart: <em>prosafragment, oversetting</em></li>
+</ul>
+<hr />
+<h2 id="gollums-schat"><a class="header" href="#gollums-schat">Gollums schat</a></h2>
+<p>Schat, schat, schat ! Schryde Gollum. Myn Schat ! O myn schat ! Daarup, als sye äug betrahted up tuwards syt bäute, hi makte ein stäp tu fer, wackelde, swang ein augblick up den rand, tan, met en schry, hi fell. Fram de diepd kam up syn latste stöning « Schat » oh dat was syn ende.</p>
+<div style="break-before: page; page-break-before: always;"></div><p><strong>Informasjonen:</strong></p>
+<ul>
+<li>Oversetter: <em>Olivier Simon</em></li>
+<li>Textart: <em>prosa, oversetting</em></li>
+</ul>
+<hr />
+<h2 id="halifirien"><a class="header" href="#halifirien">Halifirien</a></h2>
+<p>In dat spraak af de Rohirrim, den name Halifirien bedäuded « den Heilige Berg ». For deren komst, et het in Sindarin Amon Anwar, den Majesteitshigel, en name wes grund nein, in Gondor, wist, auten (als dat was sien daarafter) den Suveränen ofder den amteerende Seneschalk. For de fau mensch wo dörd wyke fram den strat oh wandre under sye läuf, dat Wed bar in sy den grund af syn name, oh in dat Samspraak het et « Mürmelwed ».</p>
+<div style="break-before: page; page-break-before: always;"></div><p><strong>Informasjonen:</strong></p>
+<ul>
+<li>Oversetter: <em>Olivier Simon</em></li>
+<li>Textart: <em>prosa, lowtext, oversetting</em></li>
+</ul>
+<hr />
+<h2 id="lowfragment"><a class="header" href="#lowfragment">Lowfragment</a></h2>
+<p>Forautsetting:</p>
+<ul>
+<li>Nein fastsettede faderschap</li>
+<li>Bewys af kopulasjonen met den moder dürend den lowlyke tyd af den koncepsjonen</li>
+</ul>
+<p>Mä wen den anklagde bewys dat hi kan nit wese den fader, den process mog nit wese fortsetted.</p>
+<div style="break-before: page; page-break-before: always;"></div><p><strong>Informasjonen:</strong></p>
+<ul>
+<li>Oversetter: <em>Olivier Simon</em></li>
+<li>Textart: <em>prosa, oversetting</em></li>
+</ul>
+<hr />
+<h2 id="romäne-eröbring"><a class="header" href="#romäne-eröbring">Romäne eröbring</a></h2>
+<p>In alle territorja af dere eröbring had de Romänen bäud talriche städ welche en wydt netwerk af wel bybeholdene strät forband. Europas fölk had so kund fastsete fruktbare handelsautvexling makd lyt av dat fakt dat die war underkasted tu de same löw oh sprak dat same spraak. Disen livewyse ward änderd af den ankomst af de Germanen. Dise wyde sy for allt tu landbruk oh mest war nit intereseerd af de grote steinstäd welche de Romänen had bäud. Die levde in dörp met häus aut wed oh lerklining. Um dise dörp lag äker af rog, wete ofder baris, oh hege for dat fie. De Germanen wov schapwul tu make sy kled. Wyv bar lange skört oh männ schorte hämit over bröx. Brösch smückt met juvelen djende tu loke de dicke jacke aut wul ofder pels welche färdigstellde dise dräht.</p>
+<div style="break-before: page; page-break-before: always;"></div><p><strong>Informasjonen:</strong></p>
+<ul>
+<li>Oversetter: <em>Olivier Simon</em></li>
+<li>Textart: <em>prosa, oversetting</em></li>
+</ul>
+<hr />
+<h2 id="woden-oh-tiewe"><a class="header" href="#woden-oh-tiewe">Woden oh Tiewe</a></h2>
+<p>Wyl Woden oh Tiewe representeer in den gödwerld two aspekte af suveräniteit – den magische maht oh den kraft af den rehtsfordrag -, Donder is full den Krigsgod, bewaapend met syn schreckende blixlyke hammer. Alltyd rysend, tu fut ofder in en wagen dragen af böck, up den sok for rise, wem hi lik autrote. De Aas kall Donder elchen tyd wen die är drud ofder overfallen af dere fijänd. Fram disen brutale kriger afhang, in den epische tradisjonen, en helt lyk Starkader, wyl junge forledende krigers lyk Sigurd är Wodens favoriten.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

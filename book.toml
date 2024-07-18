@@ -1,0 +1,18 @@
+[book]
+authors = ["Olivier Simon", "Leo Stief"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Germanischt korpus"
+description = "En korpus af text schriven in Germanisch."
+
+[output.html.search]
+use-boolean-and = true
+
+[output.html]
+no-section-label = true
+default-theme = "light"
+preferred-dark-theme = "rust"
+
+[build]
+build-dir = "docs"
