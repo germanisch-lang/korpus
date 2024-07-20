@@ -14,6 +14,7 @@
 - [De grote infäll](./de-grote-infaell.md)
 - [Den germanische West](./den-germanische-west.md)
 - [Den Sunn oh den Nordwind](./sunn-oh-nordwind.md)
+- [Den Turn af Babel](./turn-af-babel.md)
 - [Fortelling fram en dägbuk](./fortelling-fram-en-dägbuk.md)
 - [Frodo den Hobbit](./frodo-den-hobbit.md)
 - [Gollums schat](./gollums-schat.md)
